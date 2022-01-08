@@ -32,6 +32,6 @@ jobs:
         git config --global user.name "Github Actions"
         git add database.sqlite3
         git commit -m "update database by github action"
-        git add docs/*
+        git add docs
         git commit -m "generate docs"
         git push origin main 
