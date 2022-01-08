@@ -96,7 +96,7 @@ class UpdateVideoStarList:
             c.cover for c in database.session.query(database.VideoList.cover).all()
         ]
         for cover in cover_list:
-            query = (
+            query = ( 
                 database.session.query(database.Assets).filter_by(source=cover).first()
             )
             if query and query.backup is not None:
@@ -143,7 +143,7 @@ class UpdateVideoStarList:
 
     def start(self):
         self.update_video_list()
-        #self.update_video_cover()
+        self.update_video_cover()
 
 
 if __name__ == "__main__":
