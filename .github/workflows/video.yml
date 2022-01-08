@@ -3,6 +3,8 @@ name: Update Favorite Video List
 on:
   push:
     branches: [ main ]
+  schedule:
+    - cron: 0 9 */1 * *
 
 jobs:
   build:
@@ -26,7 +28,7 @@ jobs:
         IMAGE_SERVER_KEY: ${{ secrets.IMAGE_SERVER_KEY }}
       run: |
         python update_video.py
-    - name: Update Database to Repo
+    - name: Update Repo And Push
       run: |
         git config --global user.email "actions@imea.me"
         git config --global user.name "Github Actions"
