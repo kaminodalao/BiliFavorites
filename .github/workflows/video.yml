@@ -28,6 +28,8 @@ jobs:
         python update_video.py
     - name: Update Database to Repo
       run: |
+        git config --global user.email "actions@imea.me"
+        git config --global user.name "Github Actions"
         git add database.sqlite3
         git commit -m "update database by github action"
         git push origin main 
