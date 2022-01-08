@@ -176,7 +176,7 @@ class UpdateVideoStarList:
                         video.title.replace("|", "\|")
                         .replace("[", "\[")
                         .replace("]", "\]"),
-                        video.bvid,
+                        video.bvid.lower(),
                         video.bvid,
                         video.upname,
                         status,
