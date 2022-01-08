@@ -143,6 +143,7 @@ class UpdateVideoStarList:
                 print("上传图床失败 %s" % data["error"]["message"])
 
     def write_row_to_video_docs(self, text=""):
+        print(text)
         with open("docs/Video.md", "a", encoding="utf8") as f:
             f.write("%s\n" % text)
 
@@ -166,8 +167,16 @@ class UpdateVideoStarList:
             for video in videos:
                 self.write_row_to_video_docs(
                     "| %s | %s | %s | %s |"
-                    % (video.title, video.bvid, video.upname, video.status)
+                    % (
+                        video.title.replace("|", "\|")
+                        .replace("[", "\[")
+                        .replace("]", "\]"),
+                        video.bvid,
+                        video.upname,
+                        video.status,
+                    )
                 )
+        print("完成")
 
     def start(self):
         self.update_video_list()
