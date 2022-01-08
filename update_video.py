@@ -195,7 +195,7 @@ class UpdateVideoStarList:
                 else:
                     cover = ""
                 details_tmp.append(
-                    f'<img alt="{video.title}" src="{cover}" width="50%" align="center" />  '
+                    f'<div align="center"><img alt="{video.title}" src="{cover}" width="50%" /></div>  '
                 )
                 details_tmp.append("Title: %s  " % video.title)
                 details_tmp.append("Intro: %s  " % video.intro)
