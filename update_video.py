@@ -147,6 +147,7 @@ class UpdateVideoStarList:
             f.write("%s\n" % text)
 
     def build_video_docs(self):
+        print("生成Video.md文件")
         if os.path.exists("docs/Video.md"):
             os.unlink("docs/Video.md")
         self.write_row_to_video_docs("# VIDEO")
