@@ -8,6 +8,7 @@ import requests
 import base64
 import os
 
+
 class UpdateVideoStarList:
 
     new_video_list = []
@@ -96,7 +97,7 @@ class UpdateVideoStarList:
             c.cover for c in database.session.query(database.VideoList.cover).all()
         ]
         for cover in cover_list:
-            query = ( 
+            query = (
                 database.session.query(database.Assets).filter_by(source=cover).first()
             )
             if query and query.backup is not None:
@@ -141,9 +142,36 @@ class UpdateVideoStarList:
             else:
                 print("上传图床失败 %s" % data["error"]["message"])
 
+    def write_row_to_video_docs(self, text=""):
+        with open("docs/Video.md", "a", encoding="utf8") as f:
+            f.write("%s\n" % text)
+
+    def build_video_docs(self):
+        if os.path.exists("docs/Video.md"):
+            os.unlink("docs/Video.md")
+        self.write_row_to_video_docs("# VIDEO")
+        self.write_row_to_video_docs()
+        categories = database.session.query(database.VideoCategory).all()
+        for category in categories:
+            self.write_row_to_video_docs("## %s" % category.title)
+            videos = (
+                database.session.query(database.VideoList)
+                .filter_by(category=category.id)
+                .all()
+            )
+            self.write_row_to_video_docs("| TITLE | BVID | UPNAME | STATUS |")
+            self.write_row_to_video_docs("| ---- | ---- | ---- | ---- |")
+
+            for video in videos:
+                self.write_row_to_video_docs(
+                    "| %s | %s | %s | %s |"
+                    % (video.title, video.bvid, video.upname, video.status)
+                )
+
     def start(self):
         self.update_video_list()
         self.update_video_cover()
+        self.build_video_docs()
 
 
 if __name__ == "__main__":
