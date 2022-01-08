@@ -12,6 +12,8 @@ import os
 class UpdateVideoStarList:
 
     new_video_list = []
+    all_video_list = []
+    old_video_list = []
 
     def __init__(self, uid, image_server_api, image_server_key):
         print("连接到数据库")
@@ -62,6 +64,7 @@ class UpdateVideoStarList:
 
             for video in self.get_video_list_by_category_id(category["id"]):
                 print("获取到视频 %s(%s) -> " % (video["bvid"], video["title"]), end="")
+                self.new_video_list.append(video)
                 qv = (
                     database.session.query(database.VideoList)
                     .filter_by(bvid=video["bvid"])
@@ -85,8 +88,6 @@ class UpdateVideoStarList:
 
                     database.session.add(qv)
                     database.session.commit()
-
-                    self.new_video_list.append(qv.id)
 
                     print("已添加到数据库")
                 else:
@@ -141,6 +142,22 @@ class UpdateVideoStarList:
                     database.session.commit()
             else:
                 print("上传图床失败 %s" % data["error"]["message"])
+
+    def delete_unstar_video(self):
+        query = database.session.query(database.VideoList.bvid).all()
+        self.all_video_list = [item.bvid for item in query]
+        new_video_list = [item["bvid"] for item in self.new_video_list]
+
+        for v in self.all_video_list:
+            if v not in new_video_list:
+                for qv in (
+                    database.session.query(database.VideoList).filter_by(bvid=v).all()
+                ):
+                    print("删除视频 %s(%s)" % (qv.bvid, qv.title))
+                    database.session.query(database.VideoList).filter_by(
+                        id=qv.id
+                    ).delete()
+                    database.session.commit()
 
     def write_row_to_video_docs(self, text=""):
         print(text)
@@ -221,6 +238,7 @@ class UpdateVideoStarList:
 
     def start(self):
         self.update_video_list()
+        self.delete_unstar_video()
         self.update_video_cover()
         self.build_video_docs()
 
