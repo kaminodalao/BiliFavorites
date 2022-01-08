@@ -1,5 +1,5 @@
 # VIDEO
-build at 2022-01-08 10:20:09  
+build at 2022-01-08 10:23:19  
 
 ## INDEX
 ### 默认收藏夹
@@ -277,6 +277,8 @@ build at 2022-01-08 10:20:09
 | TITLE | BVID | UPNAME | STATUS |
 | ---- | ---- | ---- | ---- |
 | [已失效视频](#bv1ka411w7jk) | BV1kA411W7JK | 咩2016 | LOST |
+| [当我重新填词了《孤勇者》并且配上了剪辑…](#bv1rl4y1n7ym) | BV1rL4y1n7Ym | 临枫LinFeng |  |
+| [我的世界？不就是个种田游戏嘛！  【我的世界#04】](#bv12r4y1d7m5) | BV12r4y1D7m5 | 爱玩游戏的尘甲 |  |
 ### 动画区
 | TITLE | BVID | UPNAME | STATUS |
 | ---- | ---- | ---- | ---- |
@@ -2488,6 +2490,22 @@ Intro: YouTube\n【黑科技】只用羊看bad apple？这创意给跪了！
 Category: 实验  
 Url: [https://www.bilibili.com/video/BV1kA411W7JK](https://www.bilibili.com/video/BV1kA411W7JK)  
 UP: [咩2016](https://space.bilibili.com/22179720)\[22179720\]   
+
+### BV1rL4y1n7Ym
+![当我重新填词了《孤勇者》并且配上了剪辑…](https://image.futechlab.com/images/2022/01/08/06dad8671ed0.jpg)  
+Title: 当我重新填词了《孤勇者》并且配上了剪辑…  
+Intro: 求三连！求关注！  
+Category: 实验  
+Url: [https://www.bilibili.com/video/BV1rL4y1n7Ym](https://www.bilibili.com/video/BV1rL4y1n7Ym)  
+UP: [临枫LinFeng](https://space.bilibili.com/148927107)\[148927107\]   
+
+### BV12r4y1D7m5
+![我的世界？不就是个种田游戏嘛！  【我的世界#04】](https://image.futechlab.com/images/2022/01/08/3a8d179c630e.jpg)  
+Title: 我的世界？不就是个种田游戏嘛！  【我的世界#04】  
+Intro: 游戏：我的世界\n\n整合包：修改自up主【四川柯基菌】发布的真实地形生存整合包，如需获取请自行前往柯基菌相关视频简介中查找。\n\n本期推荐BGM： Travis Howard - life before it starts\n                            Masetti - Our Own Heaven\n\n标题是玩笑话，相信mc玩家都能理解吧！\n\n一切都起源于以前看到的mc视频里超级好看的麦田，所以我就想在自己的存档里也种一片。\n\n本期好像没干啥，就种了点田！\n\n但是好像又干的挺多的，  
+Category: 实验  
+Url: [https://www.bilibili.com/video/BV12r4y1D7m5](https://www.bilibili.com/video/BV12r4y1D7m5)  
+UP: [爱玩游戏的尘甲](https://space.bilibili.com/12325142)\[12325142\]   
 
 ### BV1KJ411C7Yh
 ![七日seven days【2020拜年祭单品】](https://image.futechlab.com/images/2022/01/08/de1099fc9f3b.jpg)  
