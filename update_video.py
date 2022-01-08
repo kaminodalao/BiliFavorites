@@ -169,6 +169,9 @@ class UpdateVideoStarList:
         if os.path.exists("docs/Video.md"):
             os.unlink("docs/Video.md")
         self.write_row_to_video_docs("# VIDEO")
+        self.write_row_to_video_docs(
+            "build at %s  " % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        )
         self.write_row_to_video_docs()
         self.write_row_to_video_docs("## INDEX")
         categories = database.session.query(database.VideoCategory).all()
