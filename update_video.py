@@ -155,6 +155,7 @@ class UpdateVideoStarList:
         self.write_row_to_video_docs()
         self.write_row_to_video_docs("## INDEX")
         categories = database.session.query(database.VideoCategory).all()
+        details_tmp = []
         for category in categories:
             self.write_row_to_video_docs("### %s" % category.title)
             videos = (
@@ -182,44 +183,44 @@ class UpdateVideoStarList:
                         status,
                     )
                 )
+                details_tmp.append("### %s" % video.bvid)
+
+                qi = (
+                    database.session.query(database.Assets)
+                    .filter_by(source=video.cover)
+                    .first()
+                )
+                if qi and qi.backup is not None:
+                    cover = qi.backup
+                else:
+                    cover = ""
+                details_tmp.append(
+                    f'<img alt="{video.title}" src="{cover}" width="50%" align="center">  '
+                )
+                details_tmp.append("Title: %s  " % video.title)
+                details_tmp.append("Intro: %s  " % video.intro)
+                details_tmp.append("Category: %s  " % category.title)
+                details_tmp.append(
+                    "Url: [https://www.bilibili.com/video/%s](https://www.bilibili.com/video/%s)  "
+                    % (video.bvid, video.bvid)
+                )
+                details_tmp.append(
+                    "UP: [%s](https://space.bilibili.com/%s)\[%s\]   "
+                    % (video.upname, video.upid, video.upid)
+                )
+
+                details_tmp.append("")
 
         self.write_row_to_video_docs()
         self.write_row_to_video_docs("## DETAIL")
 
-        for video in videos:
-            self.write_row_to_video_docs("### %s" % video.bvid)
-
-            qi = (
-                database.session.query(database.Assets)
-                .filter_by(source=video.cover)
-                .first()
-            )
-            if qi and qi.backup is not None:
-                cover = qi.backup
-            else:
-                cover = ""
-            self.write_row_to_video_docs(
-                '<img alt="%s" src="%s" width="50%" align="center">  '
-                % (video.title, cover)
-            )
-            self.write_row_to_video_docs("Title: %s  " % video.title)
-            self.write_row_to_video_docs("Intro: %s  " % video.intro)
-            self.write_row_to_video_docs(
-                "Url: [https://www.bilibili.com/video/%s](https://www.bilibili.com/video/%s)  "
-                % (video.bvid, video.bvid)
-            )
-            self.write_row_to_video_docs(
-                "UP: [%s](https://space.bilibili.com/%s)\[%s\]   "
-                % (video.upname, video.upid, video.upid)
-            )
-
-            self.write_row_to_video_docs()
-
+        for detail in details_tmp:
+            self.write_row_to_video_docs(detail)
         print("完成")
 
     def start(self):
-        self.update_video_list()
-        self.update_video_cover()
+        # self.update_video_list()
+        # self.update_video_cover()
         self.build_video_docs()
 
 
