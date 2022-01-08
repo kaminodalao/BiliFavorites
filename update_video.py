@@ -153,9 +153,10 @@ class UpdateVideoStarList:
             os.unlink("docs/Video.md")
         self.write_row_to_video_docs("# VIDEO")
         self.write_row_to_video_docs()
+        self.write_row_to_video_docs("## INDEX")
         categories = database.session.query(database.VideoCategory).all()
         for category in categories:
-            self.write_row_to_video_docs("## %s" % category.title)
+            self.write_row_to_video_docs("### %s" % category.title)
             videos = (
                 database.session.query(database.VideoList)
                 .filter_by(category=category.id)
@@ -170,16 +171,47 @@ class UpdateVideoStarList:
                 else:
                     status = ""
                 self.write_row_to_video_docs(
-                    "| %s | %s | %s | %s |"
+                    "| [%s](#%s) | %s | %s | %s |"
                     % (
                         video.title.replace("|", "\|")
                         .replace("[", "\[")
                         .replace("]", "\]"),
                         video.bvid,
+                        video.bvid,
                         video.upname,
                         status,
                     )
                 )
+
+        self.write_row_to_video_docs()
+        self.write_row_to_video_docs("## DETAIL")
+
+        for video in videos:
+            self.write_row_to_video_docs("### %s" % video.bvid)
+
+            qi = (
+                database.session.query(database.Assets)
+                .filter_by(source=video.cover)
+                .first()
+            )
+            if qi and qi.backup is not None:
+                cover = qi.backup
+            else:
+                cover = ""
+            self.write_row_to_video_docs("![%s](%s)" % (video.title, cover))
+            self.write_row_to_video_docs("Title: %s  " % video.title)
+            self.write_row_to_video_docs("Intro: %s  " % video.intro)
+            self.write_row_to_video_docs(
+                "Url: [https://www.bilibili.com/video/%s](https://www.bilibili.com/video/%s)  "
+                % (video.bvid, video.bvid)
+            )
+            self.write_row_to_video_docs(
+                "UP: [%s](https://space.bilibili.com/%s)\[%s\]   "
+                % (video.upname, video.upid, video.upid)
+            )
+
+            self.write_row_to_video_docs()
+
         print("完成")
 
     def start(self):
