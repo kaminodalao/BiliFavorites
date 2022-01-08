@@ -195,7 +195,7 @@ class UpdateVideoStarList:
                 else:
                     cover = ""
                 details_tmp.append(
-                    f'<img alt="{video.title}" src="{cover}" width="50%" align="center">  '
+                    f'<img alt="{video.title}" src="{cover}" width="50%" align="center" />  '
                 )
                 details_tmp.append("Title: %s  " % video.title)
                 details_tmp.append("Intro: %s  " % video.intro)
@@ -219,8 +219,8 @@ class UpdateVideoStarList:
         print("完成")
 
     def start(self):
-        # self.update_video_list()
-        # self.update_video_cover()
+        self.update_video_list()
+        self.update_video_cover()
         self.build_video_docs()
 
 
