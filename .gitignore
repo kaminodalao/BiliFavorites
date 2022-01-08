@@ -1,0 +1,5 @@
+/download/*
+__pycache__
+/tmp/*
+/test
+/env
