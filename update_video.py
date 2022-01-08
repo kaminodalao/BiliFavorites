@@ -198,7 +198,10 @@ class UpdateVideoStarList:
                 cover = qi.backup
             else:
                 cover = ""
-            self.write_row_to_video_docs("![%s](%s)" % (video.title, cover))
+            self.write_row_to_video_docs(
+                '<img alt="%s" src="%s" width="50%" align="center">  '
+                % (video.title, cover)
+            )
             self.write_row_to_video_docs("Title: %s  " % video.title)
             self.write_row_to_video_docs("Intro: %s  " % video.intro)
             self.write_row_to_video_docs(
