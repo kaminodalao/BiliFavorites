@@ -197,6 +197,7 @@ class UpdateVideoStarList:
                 """details_tmp.append(
                     f'<div align="center"><img alt="{video.title}" src="{cover}" width="50%" /></div>  '
                 )"""
+                details_tmp.append("![%s](%s)  " % (video.title, cover))
                 details_tmp.append("Title: %s  " % video.title)
                 details_tmp.append("Intro: %s  " % video.intro)
                 details_tmp.append("Category: %s  " % category.title)
