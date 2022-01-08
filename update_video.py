@@ -165,6 +165,10 @@ class UpdateVideoStarList:
             self.write_row_to_video_docs("| ---- | ---- | ---- | ---- |")
 
             for video in videos:
+                if video.status is not None:
+                    status = video.status
+                else:
+                    status = ""
                 self.write_row_to_video_docs(
                     "| %s | %s | %s | %s |"
                     % (
@@ -173,7 +177,7 @@ class UpdateVideoStarList:
                         .replace("]", "\]"),
                         video.bvid,
                         video.upname,
-                        video.status,
+                        status,
                     )
                 )
         print("完成")
