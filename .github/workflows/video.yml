@@ -26,3 +26,8 @@ jobs:
         IMAGE_SERVER_KEY: ${{ secrets.IMAGE_SERVER_KEY }}
       run: |
         python update_video.py
+    - name: Update Database to Repo
+      run: |
+        git add database.sqlite3
+        git commit -m "update database by github action"
+        git push origin main 
