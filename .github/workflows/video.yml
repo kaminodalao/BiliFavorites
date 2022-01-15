@@ -31,8 +31,8 @@ jobs:
         python update_video.py
     - name: Update Repo And Push
       run: |
-        git config --global user.email "actions@imea.me"
-        git config --global user.name "Github Actions"
+        git config --global user.email "kamino@imea.me"
+        git config --global user.name "kamino"
         git add .
         git commit -m "update by github actions"
         git push origin main 
