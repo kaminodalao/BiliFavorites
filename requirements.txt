@@ -1,4 +1,0 @@
-sqlalchemy
-requests
-pymysql
-bilibili_api
