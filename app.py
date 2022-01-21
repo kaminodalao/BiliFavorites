@@ -5,7 +5,6 @@ import os
 import time
 import re
 import msal
-import pymysql
 import requests
 from bilibili_api import favorite_list, sync, video
 import logging
