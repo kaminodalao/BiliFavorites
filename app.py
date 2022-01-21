@@ -239,7 +239,8 @@ class BiliFavorites:
             with open(self.video_save_file) as fr:
                 self.saved_favorities = json.loads(fr.read())
                 self.saved_bvid = self.saved_favorities.keys()
-                logging.info("Load Saved Video %s" % len(self.saved_favorities))
+                logging.info("Load Saved Video %s" %
+                             len(self.saved_favorities))
         try:
             _load_saved_file()
         except Exception as e:
@@ -296,7 +297,8 @@ class BiliFavorites:
                     logging.info("Backup Cover File %s" % video['cover'])
                     tempfile = os.path.abspath(
                         "download/%s" % video['cover'].split('/')[-1])
-                    response = requests.get(video['cover'])
+                    response = requests.get(video['cover'], timeout=5, headers={
+                                            'user-agent': 'Mozilla/5.0 (X11; U; Linux i686; rv:1.7.8) Gecko/20060628 Debian/1.7.8-1sarge7.1'})
                     with open(tempfile, "wb") as f:
                         f.write(response.content)
                     remote_url = self.od.upload_file(
