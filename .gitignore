@@ -3,3 +3,6 @@ __pycache__
 /tmp/*
 /test
 /env
+!download/.gitkeep
+!database/.gitkeep
+!docs/.gitkeep
