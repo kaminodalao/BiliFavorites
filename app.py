@@ -4,8 +4,6 @@ import json
 import os
 import time
 import re
-from turtle import pu
-from itsdangerous import exc
 import msal
 import pymysql
 import requests
