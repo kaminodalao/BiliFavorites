@@ -9,6 +9,8 @@ import requests
 from bilibili_api import favorite_list, sync, video
 import logging
 
+exit()
+
 
 from office365.graph_client import GraphClient
 
